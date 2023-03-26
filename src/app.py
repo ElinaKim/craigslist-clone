@@ -16,11 +16,17 @@ class User(db.Model):
     username = db.Column(db.String(65), unique=True)
     email = db.Column(db.String(120), unique=True)
 
-    def __init__(self, username):
+    def __init__(self, username, email):
         self.username = username
+        self.email = email
     
     def __repr__(self):
         return "<User '{}'>".format(self.username)
-    
+
+class Category(db.Model):
+    __tablename__ = 'category'
+    id = db.Column(db.Integer(), primary_key = True)
+    name = db.Column(db.String(65), unique=True, nullable=False)
+
 if __name__ == '__main__':
     app.run()

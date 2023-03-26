@@ -7,3 +7,17 @@ migrations/*.pyd
 migrations/*.db
 migrations/*.log
 migrations/versions/*
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+pip-selfcheck.json
