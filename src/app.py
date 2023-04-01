@@ -26,13 +26,14 @@ class User(db.Model):
 class Category(db.Model):
     __tablename__ = 'category'
     id = db.Column(db.Integer(), primary_key = True)
-    name = db.Column(db.String(65), unique=True, nullable=False)
+    name = db.Column(db.String(70), unique=True, nullable=False)
+    parent_category_id = db.Column(db.Integer(), db.ForeignKey('category.id'), nullable=False)
 
-class SubCategory(db.Model):
-    __tablename__ = 'sub_category'
-    id = db.Column(db.Integer(), primary_key = True)
-    name = db.Column(db.String(65), unique=True, nullable=False)
-    category_id = db.Column(db.Integer(), db.ForeignKey('category.id'))
+    sub_categories = db.relationship('Category', remote_side=[id], backref='parent_category')
+
+    def __repr__(self):
+        return f"<Category(id={self.id}, name='{self.name}')>"
+
 
 if __name__ == '__main__':
     app.run()
